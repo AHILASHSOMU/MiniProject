@@ -1,0 +1,147 @@
+<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %>
+    <% }else { %> <%- include ('../partials/userHeader.ejs') %>
+        <% } %>
+
+          <!-- Shop Details Section Begin -->
+
+
+          <!-- breadcrumb-section -->
+          <div class="breadcrumb-section breadcrumb-bg">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                  <div class="breadcrumb-text">
+                    <p>See more Details</p>
+                    <h1>Product page</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end breadcrumb section -->
+
+
+
+          <!-- image zoom trial try  -->
+
+          <div class="container mt-5 mb-5">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="images p-3">
+
+                        <a href="/banners/<%= product.image[0] %>" class="MagicZoom" id="motorbike"
+                          data-options="selectorTrigger: hover; transitionEffect: false"><img
+                            src="/banners/<%= product.image[0] %> " id="main-image"></a>
+
+                        <div class="thumbnail text-center" style="height: 5rem; margin-top: 1rem">
+                          <a data-zoom-id="motorbike" href="/banners/<%= product.image[0] %>"
+                            data-image="/banners<%= product.image[0] %>"><img style="height: 5rem; margin-left: 1rem"
+                              onclick="change_image(this)" src="/banners/<%= product.image[0] %>"></a>
+                          <a data-zoom-id="motorbike" href="/banners/<%= product.image[1] %>"
+                            data-image="/banners<%= product.image[1] %>"><img style="height: 5rem; margin-left: 1rem"
+                              onclick="change_image(this)" src="/banners/<%= product.image[1] %>"></a>
+                          <a data-zoom-id="motorbike" href="/banners/<%= product.image[2] %>"
+                            data-image="/banners<%= product.image[2] %>"><img style="height: 5rem; margin-left: 1rem"
+                              onclick="change_image(this)" src="/banners/<%= product.image[2] %>"></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-8">
+                        <div class="product__details__text">
+                          <h4>
+                            <%= product.productname %>
+                          </h4>
+                          <div class="rating" data-rating="<%= product.rating %>">
+                            <% for(let count=0; count<product.rating; count++) { %>
+                              <i class="fa fa-star"></i>
+                              <% } %>
+                          </div>
+                          <h3>Rs.<%= product.price %><span></span></h3>
+                          <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
+                            cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
+                            with placket.</p>
+
+                          <div class="product__details__cart__option">
+
+                            <a href="/add-to-cart?id=<%= product._id %>" class="primary-btn">add to cart</a>
+                          </div>
+                          <div class="product__details__btns__option">
+                            <a href="/add-to-wishlist?id=<%= product._id %>"><i class="fa fa-heart"></i> add to
+                              wishlist</a>
+
+                          </div>
+                          <div class="product__details__last__option">
+                            <h5><span>Guaranteed Safe Checkout</span></h5>
+
+                            <ul>
+
+                              <li><span>Categories:</span>
+                                <%= product.category %>
+                              </li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- logo carousel -->
+          <div class="logo-carousel-section">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="logo-carousel-inner">
+                    <div class="single-logo-item">
+                      <img src="assets/img/company-logos/1.png" alt="" />
+                    </div>
+                    <div class="single-logo-item">
+                      <img src="assets/img/company-logos/2.png" alt="" />
+                    </div>
+                    <div class="single-logo-item">
+                      <img src="assets/img/company-logos/3.png" alt="" />
+                    </div>
+                    <div class="single-logo-item">
+                      <img src="assets/img/company-logos/4.png" alt="" />
+                    </div>
+                    <div class="single-logo-item">
+                      <img src="assets/img/company-logos/5.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end logo carousel -->
+
+          <!-- image zooming script -->
+          </script>
+
+          <!-- image zoom scriptsss -->
+
+          <script>
+            function change_image(image) {
+              var container = document.getElementById("main-image");
+              container.src = image.src;
+              image.parentElement.parentElement.children[0].children[0].setAttribute('href', `${image.src}`)
+              image.parentElement.parentElement.children[0].children[0].children[0].setAttribute('src', `${image.src}`)
+            }
+
+  // document.addEventListener("DOMContentLoaded", function (event) {});
+          </script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+
+
+
+          <%- include ('../partials/userfooter.ejs') %>

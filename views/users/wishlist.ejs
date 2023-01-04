@@ -1,0 +1,107 @@
+<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else {
+%> <%- include ('../partials/userHeader.ejs') %> <% } %>
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb__text">
+          <h4>Shopping Wishlist</h4>
+          <div class="breadcrumb__links">
+            <a href="./index.html">Home</a>
+            <a href="./shop.html">Shop</a>
+            <span>Wishlist</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="shopping__cart__table">
+          <table>
+            <thead>
+              <tr>
+                <th>Product price</th>
+                <th>category</th>
+                <th>Total</th>
+                <th>Remove</th>
+                <th>Add to cart</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(id) { %> <% for(let key of wishlistProducts.item){ %>
+              <tr>
+                <td class="product__cart__item">
+                  <div class="product__cart__item__pic">
+                    <a
+                      href="/view-product?id=<%= key.productId._id %>"
+                      class="nk-image-box-1 nk-post-image"
+                    >
+                      <img
+                        src="/banners/<%= key.productId.image[0]  %>"
+                        alt="However, I have reason"
+                        width="115"
+                      />
+                    </a>
+                  </div>
+                  <div class="product__cart__item__text">
+                    <h6><%= key.productId.productname %></h6>
+                    <h5>₹-<%= key.productId.price %></h5>
+                  </div>
+                </td>
+                <td class="cart__price"><%=key.productId.category %></td>
+
+                <td class="cart__price">₹.<%=key.productId.price %></td>
+
+                <td class="cart__close">
+                  <i>
+                    <a
+                      href="/delete-wishlist?id=<%= key.productId._id %>"
+                      class="fa fa-close"
+                    ></a
+                  ></i>
+                </td>
+
+                <td class="cart__close">
+                  <a
+                    href="/add-to-cart-delete-wishlist?id=<%= key.productId._id %>"
+                    class="primary-btn"
+                    >cart</a
+                  >
+                </td>
+              </tr>
+
+              <% } %> <% }else{ %>
+              <h4 class="text-danger">
+                Not Signed in. <br />
+                Sign in now!!!
+              </h4>
+              <a href="/login" class="btn btn-primary ml-1">Login</a>
+
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="continue__btn">
+              <a href="/shop">Continue Shopping</a>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include ('../partials/userfooter.ejs') %>

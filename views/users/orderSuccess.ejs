@@ -1,0 +1,42 @@
+<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else
+{ %> <%- include ('../partials/userHeader.ejs') %> <% } %>
+
+<main class="main">
+  <!-- Breadcrumb Section Begin -->
+  <section class="breadcrumb-option">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb__text">
+            <h4>Check Out</h4>
+            <div class="breadcrumb__links">
+              <a href="/home">Home</a>
+              <a href="/shop">Shop</a>
+              <span>Check Out</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Breadcrumb Section End -->
+
+  
+    <div class="error-content text-center">
+      <div class="container">
+        <h1 class="error-title">Success</h1>
+        <!-- End .error-title -->
+        <p>Thank you for shopping with us! ...</p>
+        <a href="/shop" class="btn btn-outline-primary-2 btn-minwidth-lg">
+          <span>BACK TO HOMEPAGE</span>
+          <i class="icon-long-arrow-right"></i>
+        </a>
+      </div>
+      <!-- End .container -->
+    </div>
+    <!-- End .error-content text-center -->
+  
+</main>
+<!-- End .main -->
+
+<%- include ('../partials/userfooter.ejs') %>

@@ -1,0 +1,315 @@
+<%- include ('../partials/adminHeader.ejs') %>
+
+<div class="wrapper">
+  <div class="sidebar" data-background-color="black" data-active-color="danger">
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#" class="simple-text"> Male-Fashion </a>
+      </div>
+
+      <ul class="nav">
+        <li>
+          <a href="/admin">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+  
+        <li class="active">
+          <a href="/admin/adminUsers">
+            <i class="ti-view-list-alt"></i>
+            <p>User List</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminProductlist">
+            <i class="ti-view-list-alt"></i>
+            <p>Product List</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminCategory">
+            <i class="ti-text"></i>
+            <p>Category</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminOffer">
+            <i class="ti-pencil-alt2"></i>
+            <p>AdminOffer</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/banners">
+            <i class="ti-map"></i>
+            <p>Banner</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminOrder">
+            <i class="ti-bell"></i>
+            <p>Orders</p>
+        </a>
+        </li>
+        <li>
+          <a href="/admin/salesSheet">
+            <i class="ti-bell"></i>
+            <p>Sales sheet</p>
+          </a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar bar1"></span>
+            <span class="icon-bar bar2"></span>
+            <span class="icon-bar bar3"></span>
+          </button>
+          <a class="navbar-brand" href="#">User List</a>
+        </div>
+        
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="header">
+                <h4 class="title">Users List</h4>
+              </div>
+              <div class="content table-responsive table-full-width">
+                <table class="table table-striped">
+                  <thead>
+                    <th class="border-top-0">SI NO</th>
+                    <th class="border-top-0">USER</th>
+                    <th class="border-top-0">E-mail</th>
+                    <th class="border-top-0">MOBILE NO</th>
+                    <!-- <th class="border-top-0">Status</th> -->
+                    <th class="border-top-0">ACTION</th>
+                  </thead>
+                  <tbody>
+                    <% if( users.length> 0){ %> <% for(let i=1;i <=users.length;
+                    i++){ %>
+                    <tr>
+                      <td><%= i %></td>
+
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="m-r-10">
+                            <a class="btn btn-circle d-flex btn-info text-white"
+                              ><i class="mdi mdi-account-circle"></i
+                            ></a>
+                          </div>
+                          <div class="">
+                            <h4 class="m-b-0 font-16">
+                              <%= users[i-1].name %>
+                            </h4>
+                          </div>
+                        </div>
+                      </td>
+                      <td><%= users[i-1].email %></td>
+                      <td><%= users[i-1].mobile %></td>
+                    
+
+                      <td>
+                        <!-- Default switch -->
+
+                        <% if(users[i-1].isVerified) { %>
+                        <a
+                          class="btn btn-danger text-white block"
+                          href="/admin/blockUsers?id=<%= users[i-1]._id %> "
+                          >Block</a
+                        >
+                        <% } else { %>
+                        <a
+                          class="btn btn-info unblock"
+                          href="/admin/blockUsers?id=<%= users[i-1]._id %> "
+                          >Unblock</a
+                        >
+                        <% } %>
+                      </td>
+                    </tr>
+                    <% } } else{ %>
+                    <tr>
+                      <td colspan="5">Users Not Found</td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Table on Plain Background</h4>
+                                <p class="category">Here is a subtitle for this table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th>ID</th>
+                                    	<th>Name</th>
+                                    	<th>Salary</th>
+                                    	<th>Country</th>
+                                    	<th>City</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        	<td>1</td>
+                                        	<td>Dakota Rice</td>
+                                        	<td>$36,738</td>
+                                        	<td>Niger</td>
+                                        	<td>Oud-Turnhout</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>2</td>
+                                        	<td>Minerva Hooper</td>
+                                        	<td>$23,789</td>
+                                        	<td>Curaçao</td>
+                                        	<td>Sinaai-Waas</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>3</td>
+                                        	<td>Sage Rodriguez</td>
+                                        	<td>$56,142</td>
+                                        	<td>Netherlands</td>
+                                        	<td>Baileux</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>4</td>
+                                        	<td>Philip Chaney</td>
+                                        	<td>$38,735</td>
+                                        	<td>Korea, South</td>
+                                        	<td>Overland Park</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>5</td>
+                                        	<td>Doris Greene</td>
+                                        	<td>$63,542</td>
+                                        	<td>Malawi</td>
+                                        	<td>Feldkirchen in Kärnten</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>6</td>
+                                        	<td>Mason Porter</td>
+                                        	<td>$78,615</td>
+                                        	<td>Chile</td>
+                                        	<td>Gloucester</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div> -->
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav class="pull-left">
+          <ul>
+            <li>
+              <a href="#"> Male-Fashion </a>
+            </li>
+            <li>
+              <a href="#"> Blog </a>
+            </li>
+            <li>
+              <a href="#"> Licenses </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright pull-right">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          , made with <i class="fa fa-heart heart"></i> by
+          <a href="#">Male-Fashion</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+
+<script>
+  
+  $(".block").on("click", function(e) {
+    e.preventDefault()
+    var self = $(this)
+    Swal.fire({
+  title: 'Do you want to block the user?',
+  showDenyButton: true,
+  // showCancelButton: true,
+  confirmButtonText: 'Block',
+  denyButtonText: `Don't block`,
+// }).then((result) => {
+  // /* Read more about isConfirmed, isDenied below */
+  // if (result.isConfirmed) {
+  //   Swal.fire('Blocked!', '', 'success')
+  // } else if (result.isDenied) {
+  //   Swal.fire('User not blocked', '', 'info')
+  // }
+}).then((result) => {
+      if (result.isConfirmed) {
+
+        location.href = self.attr("href")
+    }
+})
+
+})
+  
+  
+  </script>
+  
+  <script>
+  
+  $(".unblock").on("click", function(e) {
+    e.preventDefault()
+    var self = $(this)
+    Swal.fire({
+  title: 'Do you want to Unblock the user?',
+  showDenyButton: true,
+  // showCancelButton: true,
+  confirmButtonText: 'Unblock',
+  denyButtonText: `Keep it blocked`,
+// }).then((result) => {
+//   /* Read more about isConfirmed, isDenied below */
+//   if (result.isConfirmed) {
+//     Swal.fire('Saved!', '', 'success')
+//   } else if (result.isDenied) {
+//     Swal.fire('Changes are not saved', '', 'info')
+//   }
+}).then((result) => {
+      if (result.isConfirmed) {
+
+        location.href = self.attr("href")
+    }
+})
+
+})
+  
+  
+  </script>
+  
+
+<%- include ('../partials/adminSidebar.ejs') %>

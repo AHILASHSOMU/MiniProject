@@ -1,0 +1,146 @@
+<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else
+{%> <%- include ('../partials/userHeader.ejs') %> <% } %>
+
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb__text">
+          <h4>Shopping Cart</h4>
+          <div class="breadcrumb__links">
+            <a href="./index.html">Home</a>
+            <a href="./shop.html">Shop</a>
+            <span>Shopping Cart</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="shopping__cart__table">
+          <table>
+            <thead>
+              <tr>
+                <th>Product price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(id) { %> <% for(let key of cartProducts.item){ %>
+              <tr>
+                <td class="product__cart__item">
+                  <div class="product__cart__item__pic">
+                    <a
+                      href="/view-product?id=<%= key.productId._id %>"
+                      class="nk-image-box-1 nk-post-image"
+                    >
+                      <img
+                        src="/banners/<%= key.productId.image[0]  %>"
+                        alt="However, I have reason"
+                        width="115"
+                      />
+                    </a>
+                  </div>
+                  <div class="product__cart__item__text">
+                    <h6><%= key.productId.productname %></h6>
+                    <h5>₹.<%= key.productId.price %></h5>
+                  </div>
+                </td>
+                <td class="quantity">
+                  <div class="input-group mb-3">
+                   <input type="hidden" id="productId" value="<%=key.productId._id%>">
+                      <input
+                        name="quantity"
+                        type="number"
+                        class="quantity form-control input-number qty"
+                        value="<%= key.qty %>"
+                        min="1"
+                        max="20"
+                      />
+                   
+                  </div>
+                </td>
+                <td class="cart__price">
+                  ₹.<%= key.qty*key.productId.price %>
+                </td>
+
+                <td class="cart__close">
+                  <i>
+                    <a
+                      href="/delete-cart?id=<%= key.productId._id %>"
+                      class="fa fa-close"
+                    ></a
+                  ></i>
+                </td>
+              </tr>
+
+              <% } %> <% }else{ %>
+              <h4 class="text-danger">
+                Not Signed in. <br />
+                Sign in now!!!
+              </h4>
+              <a href="/login" class="btn btn-primary ml-1">Login</a>
+
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="continue__btn">
+              <a href="/shop">Continue Shopping</a>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+
+      <% if(id) { %> <% for(let key of cartProducts.item){ %>
+
+      <div class="col-lg-4">
+       
+        <div class="cart__total">
+          <h6>Cart total</h6>
+          <ul>
+            <li>
+              Subtotal
+              <span id="totaloff">
+                <% if(id){ %> ₹.<%= cartProducts.totalPrice %> <% } %></span
+              >
+            </li>
+            <li>
+              Total
+              <span id="totalCart">
+                <% if(id){ %> ₹.<%= cartProducts.totalPrice %> <% } %></span
+              >
+            </li>
+          </ul>
+          <a href="/checkout" class="primary-btn">Proceed to checkout</a>
+        </div>
+      </div>
+      <% } %> <% }else{ %>
+              <h3>Cart is empty</h3>
+              <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Shopping Cart Section End -->
+
+
+
+
+
+<%- include ('../partials/userfooter.ejs') %>

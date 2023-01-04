@@ -1,0 +1,212 @@
+<!-- <form id="form" action="/register" method="post">
+      <input id="username" type="text" name="name" placeholder="Enter name" />
+      <br /><br />
+      <input id="email" type="email" name="email" placeholder="Enter email" />
+      <br /><br />
+      <input id="mobileno" type="text" name="mno" placeholder="Enter mobile" />
+      <br /><br />
+      <input
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Enter password"
+      />
+      <br /><br />
+      <input
+        id="password2"
+        type="password"
+        name="password2"
+        placeholder="Confirm password"
+      />
+      <% if (typeof message !=='undefined' ){ %>
+      <p style="color: red"><%= message %></p>
+      <% }%> <br /><br />
+      <input type="submit" value="Register" />
+    </form> -->
+
+<%- include ('../partials/userHeader.ejs') %>
+<form id="form" action="/register" onsubmit="return validation()" method="post">
+  <section class="vh-30" style="background-color: #53575e">
+    <div class="container py-2 h-50">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+          <div class="card shadow-2-strong" style="border-radius: 1rem">
+            <div class="card-body p-5 text-center">
+              <h3 class="mb-3">Register</h3>
+
+              <div class="form-outline mb-2">
+                <input
+                  type="text"
+                  name="name"
+                  id="user"
+                  class="form-control form-control-lg"
+                />
+                <span id="username" class="text-danger font-weight-bold"></span>
+                <label class="form-label" for="typeEmailX-2">Username</label>
+              </div>
+
+              <div class="form-outline mb-2">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control form-control-lg"
+                />
+                <span id="emailids" class="text-danger font-weight-bold"></span>
+                <label class="form-label" for="typeEmailX-2">Email</label>
+              </div>
+
+              <div class="form-outline mb-2">
+                <input
+                  type="text"
+                  name="mno"
+                  id="mobileNumber"
+                  class="form-control form-control-lg"
+                />
+                <span
+                  id="mobilenumbers"
+                  class="text-danger font-weight-bold"
+                ></span>
+                <label class="form-label" for="typeEmailX-2"
+                  >Mobile number</label
+                >
+              </div>
+
+              <div class="form-outline mb-2">
+                <input
+                  type="password"
+                  name="password"
+                  id="pass"
+                  class="form-control form-control-lg"
+                />
+                <span id="password" class="text-danger font-weight-bold"></span>
+                <label class="form-label" for="typePasswordX-2">Password</label>
+              </div>
+
+              <div class="form-outline mb-2">
+                <input
+                  type="password"
+                  name="password2"
+                  id="conpass"
+                  class="form-control form-control-lg"
+                />
+                <span
+                  id="confirmpassword"
+                  class="text-danger font-weight-bold"
+                ></span>
+                <label class="form-label" for="typePasswordX-2"
+                  >Confirm Password</label
+                >
+              </div>
+
+              <% if (typeof message !=='undefined' ){ %>
+              <p style="color: red"><%= message %></p>
+              <% }%>
+
+              <!-- Checkbox -->
+              <!-- <div class="form-check d-flex justify-content-start mb-4">
+                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                  <label class="form-check-label" for="form1Example3"> Remember password </label>
+                </div> -->
+
+              <button class="btn btn-primary btn-lg btn-block" type="submit">
+                Register
+              </button>
+
+              <hr class="my-1" />
+
+              <!-- <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
+                  type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
+                <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
+                  type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+
+<script type="text/javascript">
+  function validation() {
+    var user = document.getElementById("user").value;
+    var email = document.getElementById("email").value;
+    var mobileNumber = document.getElementById("mobileNumber").value;
+    var pass = document.getElementById("pass").value;
+    var conpass = document.getElementById("conpass").value;
+
+    if (user == "") {
+      document.getElementById("username").innerHTML =
+        "Please fill the Username field";
+      return false;
+    }
+    if (user.length <= 2 || user.length > 20) {
+      document.getElementById("username").innerHTML =
+        "Username length must be between 2 and 20";
+      return false;
+    }
+    if (!isNaN(user)) {
+      document.getElementById("username").innerHTML =
+        "only characters are allowed";
+      return false;
+    }
+
+    if (email == "") {
+      document.getElementById("emailids").innerHTML =
+        "Please fill the Email field";
+      return false;
+    }
+    if (email.indexOf("@") <= 0) {
+      document.getElementById("emailids").innerHTML = "@ Invalid position";
+      return false;
+    }
+    if (
+      email.charAt(email.length - 4) != "." &&
+      email.charAt(email.length - 3) != "."
+    ) {
+      document.getElementById("emailids").innerHTML = ". Invalid position";
+      return false;
+    }
+
+    if (mobileNumber == "") {
+      document.getElementById("mobilenumbers").innerHTML =
+        "Please fill the Mobile number field";
+      return false;
+    }
+    if (isNaN(mobileNumber)) {
+      document.getElementById("mobilenumbers").innerHTML =
+        "Please fill the Mobile number field with numbers not characters";
+      return false;
+    }
+    if (mobileNumber.length != 10) {
+      document.getElementById("mobilenumbers").innerHTML =
+        " Mobile number must be 10 digits";
+      return false;
+    }
+
+    if (pass == "") {
+      document.getElementById("password").innerHTML =
+        "Please fill the Password field";
+      return false;
+    }
+    if (pass.length <= 5 || pass.length > 20) {
+      document.getElementById("password").innerHTML =
+        "password length must be between 5 and 20";
+      return false;
+    }
+
+    if (pass != conpass) {
+      document.getElementById("confirmpassword").innerHTML =
+        "password are not matching";
+      return false;
+    }
+
+    if (conpass == "") {
+      document.getElementById("confirmpassword").innerHTML =
+        "Please fill the Confirm Password field";
+      return false;
+    }
+  }
+</script>
+
+<%- include ('../partials/userfooter.ejs') %>

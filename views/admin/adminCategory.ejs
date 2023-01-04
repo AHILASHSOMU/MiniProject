@@ -1,0 +1,273 @@
+<%- include ('../partials/adminHeader.ejs') %>
+
+
+
+<div class="wrapper">
+  <div class="sidebar" data-background-color="black" data-active-color="danger">
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	 -->
+
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#" class="simple-text"> Male-Fashion </a>
+      </div>
+
+      <ul class="nav">
+        <li>
+          <a href="/admin">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+    
+        <li>
+          <a href="/admin/adminUsers">
+            <i class="ti-view-list-alt"></i>
+            <p>User List</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminProductlist">
+            <i class="ti-view-list-alt"></i>
+            <p>Product List</p>
+          </a>
+        </li>
+        <li class="active">
+          <a href="/admin/adminCategory">
+            <i class="ti-text"></i>
+            <p>Category</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminOffer">
+            <i class="ti-pencil-alt2"></i>
+            <p>AdminOffer</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/banners">
+            <i class="ti-map"></i>
+            <p>Banner</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminOrder">
+            <i class="ti-bell"></i>
+            <p>Orders</p>
+        </a>
+        </li>
+        <li>
+          <a href="/admin/salesSheet">
+            <i class="ti-bell"></i>
+            <p>Sales sheet</p>
+          </a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar bar1"></span>
+            <span class="icon-bar bar2"></span>
+            <span class="icon-bar bar3"></span>
+          </button>
+          <a class="navbar-brand" href="#">Category List</a>
+        </div>
+      
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="content table-responsive table-full-width">
+                <div class="work-category py-3 px-3">
+                  <div class="d-flex flex-column align-items-center">
+                    <h2 class="mt-2">Manage Categories</h2>
+                  </div>
+                  <div class="mt-3 ps-2">
+
+                    <form action="/admin/adminCategory" method="post">
+                        <div class="row">
+                          <div class="col-md-12 mb-4">
+                              <div class="form-outline" >
+                                <input style="width:30vw;background-color: #b4afaf;border-radius: 5px;color: black;", type="text" name="category" id="form3Example1" class="form-control" placeholder="Enter Category here..." required
+                                />
+                              </div >
+                            
+                               <% if(typeof message !== 'undefined'){%>
+                                
+                                 <p class="mt-1 ps-2 text-danger" ><%= message %></p>
+                                  
+                                <%}%>
+
+                                <br>
+                              <button type="submit" class="btn btn-primary mb-2">Add</button>
+                            </div>
+                           
+                         
+                      </form>
+                    
+            
+                  </div>
+                  <!-- categorey table -->
+                  <div class="container bootstrap snippets bootdey">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="main-box no-header clearfix">
+                          <div class="main-box-body clearfix">
+                            <div class="table-responsive">
+                              <table
+                              class="table table-hover"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th scope="col">SI NO</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <% if( category.length> 0){ %> <% for(let
+                                  i=1;i <=category.length; i++){ %>
+                                  <tr>
+                                    <th scope="row"><%= i %></th>
+                                    <td><%= category[i-1].name %></td>
+                                    <td>
+
+                                       <% if(category[i-1].isAvailable){%>
+
+                                      <a class="btn btn-danger unshow"
+                                       href="/admin/delete-category?id=<%= category[i-1]._id %>"> Hide</a>
+                              
+                                       <% } else { %>
+
+                                        <a class="btn btn-success show"
+                                       href="/admin/delete-category?id=<%= category[i-1]._id %>"> Show</a>
+
+                                       <% } %>
+
+                                    </td>
+                                  </tr>
+                                  <% }} else { %>
+                                  <tr>
+                                    <td colspan="5">Category Not Found</td>
+                                  </tr>
+                                  <% } %>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav class="pull-left">
+          <ul>
+            <li>
+              <a href="#"> Male-Fashion </a>
+            </li>
+            <li>
+              <a href="#"> Blog </a>
+            </li>
+            <li>
+              <a href="#"> Licenses </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright pull-right">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          , made with <i class="fa fa-heart heart"></i> by
+          <a href="#">Male-Fashion</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+
+<script>
+  
+  $(".unshow").on("click", function(e) {
+    e.preventDefault()
+    var self = $(this)
+    Swal.fire({
+  title: 'Do you want to hide the Category?',
+  showDenyButton: true,
+  // showCancelButton: true,
+  confirmButtonText: 'Hide',
+  denyButtonText: `Keep it`,
+// }).then((result) => {
+  // /* Read more about isConfirmed, isDenied below */
+  // if (result.isConfirmed) {
+  //   Swal.fire('Blocked!', '', 'success')
+  // } else if (result.isDenied) {
+  //   Swal.fire('User not blocked', '', 'info')
+  // }
+}).then((result) => {
+      if (result.isConfirmed) {
+
+        location.href = self.attr("href")
+    }
+})
+
+})
+  
+  
+  </script>
+
+<script>
+
+$(".show").on("click", function(e) {
+e.preventDefault()
+var self = $(this)
+Swal.fire({
+title: 'Do you want to show the Category?',
+showDenyButton: true,
+// showCancelButton: true,
+confirmButtonText: 'Show',
+denyButtonText: `keep it`,
+// }).then((result) => {
+// /* Read more about isConfirmed, isDenied below */
+// if (result.isConfirmed) {
+//   Swal.fire('Blocked!', '', 'success')
+// } else if (result.isDenied) {
+//   Swal.fire('User not blocked', '', 'info')
+// }
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    location.href = self.attr("href")
+}
+})
+
+})
+
+
+</script>
+
+
+<%- include ('../partials/adminSidebar.ejs') %>

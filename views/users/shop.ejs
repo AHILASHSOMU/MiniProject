@@ -1,0 +1,165 @@
+<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else {
+  %> <%- include ('../partials/userHeader.ejs') %> <% } %>
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb__text">
+          <h4>Shop</h4>
+          <div class="breadcrumb__links">
+            <a href="/home">Home</a>
+            <span>Shop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shop Section Begin -->
+<section class="shop spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="shop__sidebar">
+        
+          <div class="shop__sidebar__accordion">
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-heading">
+                  <a data-toggle="collapse" data-target="#collapseOne"
+                    >Categories</a
+                  >
+                </div>
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  data-parent="#accordionExample"
+                >
+                  <div class="card-body">
+                    <div class="shop__sidebar__categories">
+                      <ul class="nice-scroll">
+                        <li class="filter-items filter-items-count" ></li>
+                       <% if(cat.length > 0){%> 
+                        <% for( let i=1;i<=cat.length;i++){ %> 
+
+                        <li><a style="color: black;" href="/shop?id=<%= cat[i-1]._id%>"><%= cat[i-1].name%></a></li>
+                        <% }}else{ %>
+                       
+                            <h3>No categories</h3>
+                        
+                          <% } %>
+                       
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+              
+             
+              
+         
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="shop__product__option">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="shop__product__option__left">
+                <p>Showing 1–6 of 126 results</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="shop__product__option__right">
+                <p>Sort by Price:</p>
+                <select>
+                  <option value="">Low To High</option>
+                  <option value="">$0 - $55</option>
+                  <option value="">$55 - $100</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <% if(products.length > 0){ 
+            for(let key of products){ %> 
+              <% if(key.isAvailable ==1) { %>
+
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="product__item">
+              <div
+                class="product__item__pic set-bg"
+                data-setbg="/banners/<%= key.image[0] %>"
+              >
+                <ul class="product__hover">
+                  <li>
+                    <a href="/add-to-wishlist?id=<%= key._id %>"
+                      ><img src="/assets/img/icon/heart.png" alt=""/>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/view-product?id=<%= key._id %>"
+                      ><img src="/assets/img/icon/compare.png" alt="" />
+                      <span>View Details</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><img src="/assets/img/icon/search.png" alt=""
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="product__item__text">
+                <h6><%= key.productname %></h6>
+
+                <a href="/add-to-cart?id=<%= key._id %>" class="add-cart"
+                  >+ Add To Cart</a
+                >
+
+                <div class="rating" data-rating="<%= key.rating %>">
+                  <% for(let count=0; count<key.rating; count++) { %>
+                  <i style="color:#f7941d" class="fa fa-star"></i>
+                  
+                  <% } %> 
+                </div>
+                <h5>Rs.<%= key.price %></h5>
+               
+              </div>
+            </div>
+          </div>
+          <% }%>
+           <% } %>
+            <% }else { %>
+          <h1>No products in Database</h1>
+          <% } %>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="product__pagination">
+              
+              <% for(let j = 1; j<= totalPages; j++){ %>
+              <% if(currentPage == j){ %>
+              <a class="active" href="?page=<%= j %>"><%= j %></a>
+              <% }else{ %>
+              <a href="?page=<%= j %>"><%= j %></a>
+              <% }} %>
+              
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Shop Section End -->
+
+<%- include ('../partials/userfooter.ejs') %>

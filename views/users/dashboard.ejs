@@ -1,0 +1,203 @@
+<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else
+{ %> <%- include ('../partials/userHeader.ejs') %> <% } %>
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb__text">
+          <h4>Shop</h4>
+          <div class="breadcrumb__links">
+            <a href="/home">Home</a>
+            <span>Dashboard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<div class="nk-tabs container">
+  <!--
+                      Additional Classes:
+                          .nav-tabs-fill
+                  -->
+  <div class="nk-gap"></div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" href="#tabs-1-1" role="tab" data-toggle="tab"
+        >User Data</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#tabs-1-2" role="tab" data-toggle="tab"
+        >Orders</a
+      >
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link" href="#tabs-1-3" role="tab" data-toggle="tab"
+        >Tab 3</a
+      >
+    </li> -->
+  </ul>
+  <div class="tab-content text-light">
+    <div role="tabpanel" class="tab-pane fade show active" id="tabs-1-1">
+      <div class="nk-gap"></div>
+
+      <section class="container">
+        <table class="table text-black">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.mobile %></td>
+              <td>
+                <a
+                  href="/edit-user?id=<%= user._id %>"
+                  class="btn btn-primary ms-2"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="nk-gap"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="tabs-1-2">
+      <div class="nk-gap"></div>
+
+      <section class="container">
+        <table class="table text-black">
+          <thead>
+            <tr>
+              <th scope="col">OrderId</th>
+              <th scope="col">Time</th>
+              <th scope="col">Payment</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <% for(let key of userOrders){ %>
+          <tbody>
+            <tr>
+              <td><%= key._id %></td>
+              <td><%= key.createdAt %></td>
+              <td><%= key.payment %></td>
+              <td><%= key.status %></td>
+              <td>
+                <a
+                  href="/cancel-order?id=<%= key._id %>"
+                  class="btn btn-primary ms-2"
+                  >Cancel Order</a
+                >
+              </td>
+              <td>
+                <a
+                  href="/view-order?id=<%= key._id %>"
+                  class="btn btn-primary ms-2"
+                  >View Details</a
+                >
+              </td>
+            </tr>
+          </tbody>
+          <% } %>
+        </table>
+      </section>
+
+      <div class="nk-gap"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="tabs-1-3">
+      <div class="nk-gap"></div>
+      <p>
+        I have related the substance of several conversations I had with my
+        master during the greatest part of the time I had the, for brevity sake,
+        omitted much moredown.
+      </p>
+      <div class="nk-gap"></div>
+    </div>
+  </div>
+</div>
+
+<section class="checkout spad">
+  <div class="container">
+    <div class="checkout__form">
+      <form action="/add-address" method="post">
+        <div class="row">
+          <div class="col-lg-8 col-md-6">
+            <h6 class="checkout__title">Add Your Address</h6>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="checkout__input">
+                  <p>Fist Name<span>*</span></p>
+                  <input style="color: black;"  type="text" name="firstname" required />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="checkout__input">
+                  <p>Last Name<span>*</span></p>
+                  <input style="color: black;" type="text" name="lastname" required />
+                </div>
+              </div>
+            </div>
+            <div class="checkout__input">
+              <p>Country<span>*</span></p>
+              <input style="color: black;" type="text" name="country" required />
+            </div>
+            <div class="checkout__input">
+              <p>Address<span>*</span></p>
+              <input
+                type="text"
+                style="color: black;"
+                placeholder="Street Address"
+                class="checkout__input__add"
+                name="streetAddress"
+                required
+              />
+             
+            </div>
+            <div class="checkout__input">
+              <p>Town/City<span>*</span></p>
+              <input style="color: black;" type="text" name="city" required />
+            </div>
+            <div class="checkout__input">
+              <p>Country/State<span>*</span></p>
+              <input style="color: black;" type="text" name="state" required />
+            </div>
+            <div class="checkout__input">
+              <p>Postcode / ZIP<span>*</span></p>
+              <input style="color: black;" type="text" name="pin" required />
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="checkout__input">
+                  <p>Phone<span>*</span></p>
+                  <input style="color: black;" type="text" name="mobileno" required />
+                </div>
+              </div>
+            
+
+              <button type="submit" class="btn btn-primary">
+                <span>Update</span>
+                <i class="icon-long-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<%- include ('../partials/userfooter.ejs') %>

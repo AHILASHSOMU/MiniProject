@@ -1,0 +1,221 @@
+<%- include ('../partials/adminHeader.ejs') %>
+
+
+  <div class="wrapper">
+    <div class="sidebar" data-background-color="black" data-active-color="danger">
+      <!--
+		 Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		 Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	    -->
+
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="#" class="simple-text"> Male-Fashion </a>
+        </div>
+
+        <ul class="nav">
+          <li>
+            <a href="/admin">
+              <i class="ti-panel"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/admin/adminUsers">
+              <i class="ti-view-list-alt"></i>
+              <p>User List</p>
+            </a>
+          </li>
+          <li  class="active">
+            <a href="/admin/adminProductlist">
+              <i class="ti-view-list-alt"></i>
+              <p>Product List</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminCategory">
+              <i class="ti-text"></i>
+              <p>Category</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminOffer">
+              <i class="ti-pencil-alt2"></i>
+              <p>AdminOffer</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/banners">
+              <i class="ti-map"></i>
+              <p>Banner</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminOrder">
+              <i class="ti-bell"></i>
+              <p>Orders</p>
+          </a>
+          </li>
+          <li>
+            <a href="/admin/salesSheet">
+              <i class="ti-bell"></i>
+              <p>Sales sheet</p>
+            </a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-panel">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar bar1"></span>
+              <span class="icon-bar bar2"></span>
+              <span class="icon-bar bar3"></span>
+            </button>
+            <a class="navbar-brand" href="#">Category List</a>
+          </div>
+          
+        </div>
+      </nav>
+
+
+      <form action="/admin/addProduct" method="post" enctype="multipart/form-data" class="my-auto" style="height: 90vh;"
+        enctype="multipart/form-data">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+
+
+
+
+
+
+
+              <div class="card bg-transparent" style="border-radius: 25px;">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add<span
+                          class="text-main-1">Product</span></p>
+
+                      <form class="mx-1 mx-md-4">
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example1c">Product Name</label>
+                            <input type="text" id="form3Example1c" class="form-control" name="gproductName" required />
+
+                          </div>
+                        </div>
+
+                        <!-- <div class="d-flex flex-row align-items-center mb-4">
+                                      
+                                      <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example3c">Category</label>
+                                        <input type="text" id="form3Example3c" class="form-control" name="gCategory" required/>
+                                        
+                                      </div>
+                                    </div> -->
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example1c">Price</label>
+                            <input type="number" id="form3Example1c" class="form-control" name="gPrice" required />
+
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center mb-4">
+
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example1c">Stock</label>
+                            <input type="number" id="form3Example1c" class="form-control" name="gStock" required />
+
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4c">Rating</label>
+                            <input type="text" id="form3Example4c" class="form-control" name="gRating" required />
+
+                          </div>
+                        </div>
+
+                        <!-- <div class="d-flex flex-row align-items-center mb-4">
+                                       
+                                      <div class="form-outline flex-fill mb-0">
+                                          <label class="form-label" for="form3Example1c">Game Rating</label>
+                                        <input type="number" id="form3Example1c" class="form-control" name="gRating"  max="5" required/>
+                                        
+                                      </div>
+                                    </div> -->
+
+                        <script>
+
+                        </script>
+                        <div class="d-flex flex-row align-items-center mb-4">
+
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label  select-label" name="gCategory"
+                              for="form3Example1c">Category</label>
+                            <select name="gCategory" class="form-control">
+                              <option value="" disabled selected>Select a Type</option>
+                              <% if(category){ %>
+                                <% for(let i=1;i <=category.length; i++){ %>
+                                  <option value="<%= category[i-1].name %>">
+                                    <%= category[i-1].name %>
+                                  </option>
+                                  <% } %>
+                                    <% }else{ %>
+                                      <h1>No Categories to add</h1>
+                                      <% } %>
+                            </select>
+                          </div>
+                        </div>
+
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+
+                          <div class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="form3Example4c">Image</label>
+                            <input type="file" id="form3Example4c" class="form-control" name="uploaded_file" id="formFileMultiple"
+                            accept="image/png, image/gif, image/jpeg" multiple/>
+
+                          </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button type="submit" value="Register" class="btn btn-primary btn-lg">Add Product</button>
+                          <a href="/admin/adminProductlist" class="btn btn-primary ml-2 btn-lg">Go Back</a>
+                        </div>
+
+                        <% if(typeof message !=='undefined' ){%>
+                          <p style="color:green">
+                            <%= message %>
+                          </p>
+                          <% } %>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </form>
+
+     
+
+
+    </div>
+  </div>
+
+  <%- include ('../partials/adminSidebar.ejs') %>
