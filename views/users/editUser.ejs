@@ -1,5 +1,5 @@
-<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else {
-  %> <%- include ('../partials/userHeader.ejs') %> <% } %>
+<% if(isLoggedin) { %> <%- include ('../partials/user-loggedin.ejs') %> <% }else {
+  %> <%- include ('../partials/user-header.ejs') %> <% } %>
 
 <form action="/edit-user" method="post" class="my-auto" style="height: 90vh;">
     <div class="container h-100">
@@ -60,4 +60,4 @@
 
 
 
-<%- include ('../partials/userfooter.ejs') %>
+<%- include ('../partials/user-footer.ejs') %>

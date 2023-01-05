@@ -1,5 +1,5 @@
-<% if(isLoggedin) { %> <%- include ('../partials/userLoggedin.ejs') %> <% }else {
-  %> <%- include ('../partials/userHeader.ejs') %> <% } %>
+<% if(isLoggedin) { %> <%- include ('../partials/user-loggedin.ejs') %> <% }else {
+  %> <%- include ('../partials/user-header.ejs') %> <% } %>
 
 <!-- Hero Section Begin -->
 <% if(banners.length > 0){
@@ -202,4 +202,4 @@
     <a href="/login" style="text-decoration: none">Login</a>
   </button> -->
 
-<%- include ('../partials/userFooter.ejs') %>
+<%- include ('../partials/user-footer.ejs') %>
