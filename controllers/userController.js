@@ -623,7 +623,7 @@ const storeOrder = async (req, res) => {
         if (req.body.payment == "COD") {
           res.redirect("/order-success");
         } else if (req.body.payment == "RazorPay") {
-          res.render("razorpay", {
+          res.render("razorPay", {
             userId: userSession.userId,
             total: completeUser.cart.totalPrice,
           });
