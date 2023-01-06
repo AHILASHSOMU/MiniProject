@@ -1,99 +1,97 @@
 <%- include ('../partials/admin-header.ejs') %>
 
-    <div class="wrapper">
-        <div class="sidebar" data-background-color="black" data-active-color="danger">
-            <!--
+<div class="wrapper">
+  <div class="sidebar" data-background-color="black" data-active-color="danger">
+    <!--
           Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
           Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
          -->
 
-            <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="#" class="simple-text"> Male-Fashion </a>
-                </div>
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#" class="simple-text"> Male-Fashion </a>
+      </div>
 
-                <ul class="nav">
-                    <li>
-                        <a href="/admin">
-                            <i class="ti-panel"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                 
-                    <li>
-                        <a href="/admin/adminUsers">
-                            <i class="ti-view-list-alt"></i>
-                            <p>User List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/adminProductlist">
-                            <i class="ti-view-list-alt"></i>
-                            <p>Product List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/adminCategory">
-                            <i class="ti-text"></i>
-                            <p>Category</p>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="/admin/adminOffer">
-                            <i class="ti-pencil-alt2"></i>
-                            <p>AdminOffer</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/banners">
-                            <i class="ti-map"></i>
-                            <p>Banner</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/adminOrder">
-                            <i class="ti-bell"></i>
-                            <p>Orders</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/salesSheet">
-                          <i class="ti-bell"></i>
-                          <p>Sales sheet</p>
-                        </a>
-                      </li>
-                  
-                </ul>
-            </div>
+      <ul class="nav">
+        <li>
+          <a href="/admin">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="/admin/adminUsers">
+            <i class="ti-view-list-alt"></i>
+            <p>User List</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminProductlist">
+            <i class="ti-view-list-alt"></i>
+            <p>Product List</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminCategory">
+            <i class="ti-text"></i>
+            <p>Category</p>
+          </a>
+        </li>
+        <li class="active">
+          <a href="/admin/adminOffer">
+            <i class="ti-pencil-alt2"></i>
+            <p>AdminOffer</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/banners">
+            <i class="ti-map"></i>
+            <p>Banner</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/adminOrder">
+            <i class="ti-bell"></i>
+            <p>Orders</p>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/salesSheet">
+            <i class="ti-bell"></i>
+            <p>Sales sheet</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar bar1"></span>
+            <span class="icon-bar bar2"></span>
+            <span class="icon-bar bar3"></span>
+          </button>
+          <a class="navbar-brand" href="#">Offers List</a>
         </div>
+      </div>
+    </nav>
 
-        <div class="main-panel">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar bar1"></span>
-                            <span class="icon-bar bar2"></span>
-                            <span class="icon-bar bar3"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Offers List</a>
-                    </div>
-                    
-                </div>
-            </nav>
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
 
-            <!-- Page wrapper  -->
-            <!-- ============================================================== -->
-
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <h4 class="page-title">Offer Management</h4>
-                        <!-- <div class="d-flex align-items-center">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+      <div class="row align-items-center">
+        <div class="col-md-12">
+          <h4 class="page-title">Offer Management</h4>
+          <!-- <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -101,138 +99,184 @@
                                 </ol>
                             </nav>
                         </div> -->
-                    </div>
-                    <div class="col-7"></div>
-                    <div class="col-md-12" class="nk-accordion mt-4" id="accordion-1" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default btn btn-danger text-white">
-                            <div class="panel-heading text-center" role="tab" id="accordion-1-1-heading">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion-1"
-                                    href="#accordion-1-1" aria-expanded="true" aria-controls="accordion-1-1">
-                                    Add Offer
-                                    <span class="panel-heading-arrow fa fa-angle-down text-white"></span>
-                                </a>
-                            </div>
-                            <div id="accordion-1-1" class="panel-collapse collapse" role="tabpanel"
-                                aria-labelledby="accordion-1-1-heading">
-                                <form action="/admin/adminOffer" method="post">
-                                    <div class="row d-flex justify-content-center align-items-center h-100">
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">Enter New Coupon</label>
-                                                <input type="text" id="form3Example3c" class="form-control" name="name"
-                                                    required />
-                                                <label class="form-label" for="form3Example3c">Enter Type</label>
-                                                <input type="text" id="form3Example3c" class="form-control" name="type"
-                                                    required />
-                                                <label class="form-label" for="form3Example3c">Enter Discount</label>
-                                                <input type="number" id="form3Example3c" class="form-control"
-                                                    name="discount" required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="submit" value="Register" class="btn btn-warning btn-lg">
-                                                    Submit
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="col-7"></div>
+        <div
+          class="col-md-12"
+          class="nk-accordion mt-4"
+          id="accordion-1"
+          role="tablist"
+          aria-multiselectable="true"
+        >
+          <div class="panel panel-default btn btn-danger text-white">
+            <div
+              class="panel-heading text-center"
+              role="tab"
+              id="accordion-1-1-heading"
+            >
+              <a
+                class="collapsed"
+                data-toggle="collapse"
+                data-parent="#accordion-1"
+                href="#accordion-1-1"
+                aria-expanded="true"
+                aria-controls="accordion-1-1"
+              >
+                Add Offer
+                <span
+                  class="panel-heading-arrow fa fa-angle-down text-white"
+                ></span>
+              </a>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Offers</h4>
-                                <!-- <h6 class="card-subtitle">Add <code>.table-hover</code> to enable a hover state on table
+            <div
+              id="accordion-1-1"
+              class="panel-collapse collapse"
+              role="tabpanel"
+              aria-labelledby="accordion-1-1-heading"
+            >
+              <form action="/admin/adminOffer" method="post">
+                <div
+                  class="row d-flex justify-content-center align-items-center h-100"
+                >
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c"
+                        >Enter New Coupon</label
+                      >
+                      <input
+                        type="text"
+                        id="form3Example3c"
+                        class="form-control"
+                        name="name"
+                        required
+                      />
+                      <label class="form-label" for="form3Example3c"
+                        >Enter Type</label
+                      >
+                      <input
+                        type="text"
+                        id="form3Example3c"
+                        class="form-control"
+                        name="type"
+                        required
+                      />
+                      <label class="form-label" for="form3Example3c"
+                        >Enter Discount</label
+                      >
+                      <input
+                        type="number"
+                        id="form3Example3c"
+                        class="form-control"
+                        name="discount"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div
+                      class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
+                    >
+                      <button
+                        type="submit"
+                        value="Register"
+                        class="btn btn-warning btn-lg"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Offers</h4>
+              <!-- <h6 class="card-subtitle">Add <code>.table-hover</code> to enable a hover state on table
                                     rows within a <code>&lt;tbody&gt;</code>.</h6> -->
 
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">SI NO</th>
-                                                <th scope="col">Offer Name</th>
-                                                <th scope="col">Offer Type</th>
-                                                <th scope="col">Offer Discount</th>
-                                                <th scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% if( offer.length> 0){ %> <% for(let i=1;i <=offer.length; i++){ %>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <%= i %>
-                                                        </th>
-                                                        <td>
-                                                            <%= offer[i-1].name %>
-                                                        </td>
-                                                        <td>
-                                                            <%= offer[i-1].type %>
-                                                        </td>
-                                                        <td>
-                                                            <%= offer[i-1].discount %>%
-                                                        </td>
-                                                        <td>
-                                                            <a
-                                                                href="/admin/delete-offer?id=<%= offer[i-1]._id %>" class="btn btn-danger remove">
-                                                                   
-                                                                    Remove</a>
-                                                        </td>
-                                                    </tr>
-                                                    <% }} else { %>
-                                                        <tr>
-                                                            <td colspan="5">Category Not Found</td>
-                                                        </tr>
-                                                        <% } %>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">SI NO</th>
+                      <th scope="col">Offer Name</th>
+                      <th scope="col">Offer Type</th>
+                      <th scope="col">Offer Discount</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if( offer.length> 0){ %> <% for(let i=1;i <=offer.length;
+                    i++){ %>
+                    <tr>
+                      <th scope="row"><%= i %></th>
+                      <td><%= offer[i-1].name %></td>
+                      <td><%= offer[i-1].type %></td>
+                      <td><%= offer[i-1].discount %>%</td>
+                      <td>
+                        <a
+                          href="/admin/delete-offer?id=<%= offer[i-1]._id %>"
+                          class="btn btn-danger remove"
+                        >
+                          Remove</a
+                        >
+                      </td>
+                    </tr>
+                    <% }} else { %>
+                    <tr>
+                      <td colspan="5">Category Not Found</td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <!-- <footer class="footer text-center">
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- End PAge Content -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Right sidebar -->
+      <!-- ============================================================== -->
+      <!-- .right-sidebar -->
+      <!-- ============================================================== -->
+      <!-- End Right sidebar -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <!-- <footer class="footer text-center">
                 All Rights Reserved by Xtreme Admin. Designed and Developed by <a
                     href="https://www.wrappixel.com">WrapPixel</a>.
             </footer> -->
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
 
-            <!-- <footer class="footer">
+    <!-- <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">
                         <ul>
@@ -257,49 +301,42 @@
                     </div>
                 </div>
             </footer> -->
-        </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
 
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
 
-
-    <script>
-  
-        $(".remove").on("click", function(e) {
-          e.preventDefault()
-          var self = $(this)
-          Swal.fire({
-        title: 'Do you want to remove the offer?',
-        showDenyButton: true,
-        // showCancelButton: true,
-        confirmButtonText: 'Remove',
-        denyButtonText: `Don't remove`,
+<script>
+  $(".remove").on("click", function (e) {
+    e.preventDefault();
+    var self = $(this);
+    Swal.fire({
+      title: "Do you want to remove the offer?",
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: "Remove",
+      denyButtonText: `Don't remove`,
       // }).then((result) => {
-        // /* Read more about isConfirmed, isDenied below */
-        // if (result.isConfirmed) {
-        //   Swal.fire('Blocked!', '', 'success')
-        // } else if (result.isDenied) {
-        //   Swal.fire('User not blocked', '', 'info')
-        // }
-      }).then((result) => {
-            if (result.isConfirmed) {
-      
-              location.href = self.attr("href")
-          }
-      })
-      
-      })
-        
-        
-        </script>
+      // /* Read more about isConfirmed, isDenied below */
+      // if (result.isConfirmed) {
+      //   Swal.fire('Blocked!', '', 'success')
+      // } else if (result.isDenied) {
+      //   Swal.fire('User not blocked', '', 'info')
+      // }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.href = self.attr("href");
+      }
+    });
+  });
+</script>
 
-
-    <%- include ('../partials/admin-sidebar.ejs') %>
+<%- include ('../partials/admin-sidebar.ejs') %>

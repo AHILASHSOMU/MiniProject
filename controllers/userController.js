@@ -33,7 +33,7 @@ let nocoupon;
 
 let isLoggedin;
 isLoggedin = false;
-// let userSession = false || {};
+
 
 const loadRegister = async (req, res) => {
   try {
@@ -90,7 +90,7 @@ const sendMessage = function (mobile, res) {
     message: `your OTP verification code is ${randomOTP}`,
     numbers: [mobile],
   };
-  //send this message
+  
   fast2sms
     .sendMessage(options)
     .then((response) => {
@@ -221,7 +221,7 @@ const viewOrder = async (req, res) => {
       const orderData = await Orders.findById({ _id: id });
       const userData = await User.findById({ _id: userSession.userId });
       await orderData.populate("products.item.productId");
-      // console.log(orderData.products.item);
+     
       res.render("viewOrder", { isLoggedin, order: orderData, user: userData });
     } else {
       res.redirect("/login");
@@ -252,11 +252,11 @@ const returnProduct = async (req, res) => {
     userSession = req.session;
     if ((userSession = req.session)) {
       const id = req.query.id;
-      // console.log('id',new String(id));
+    
       const productOrderData = await Orders.findById({
         _id: ObjectId(userSession.currentOrder),
       });
-      // console.log('productOrderData.products.item[i].productId',new String(productOrderData.products.item[0].productId));
+      
       const productData = await Product.findById({ _id: id });
       if (productOrderData) {
         for (let i = 0; i < productOrderData.products.item.length; i++) {
@@ -279,7 +279,7 @@ const returnProduct = async (req, res) => {
               console.log("productOrderData saved");
             });
           } else {
-            // console.log('Not at position: ',i);
+            
           }
         }
         res.redirect("/dashboard");
@@ -356,7 +356,7 @@ const loadHome = async (req, res) => {
 const loadshop = async (req, res) => {
   userSession = req.session;
 
-  //search
+
   var search = "";
   if (req.query.search) {
     search = req.query.search;
@@ -533,11 +533,10 @@ const loadCheckout = async (req, res) => {
       const completeUser = await userData.populate("cart.item.productId");
       const addressData = await Address.find({ userId: userSession.userId });
       const selectAddress = await Address.findOne({ _id: id });
-      // console.log('UserData: ',userData);
-      // console.log('completeUser: ',completeUser);
+      
       console.log(userSession.offer);
       if (userSession.couponTotal == 0) {
-        //update coupon
+        
         userSession.couponTotal = userData.cart.totalPrice;
       }
       res.render("checkout", {
@@ -555,7 +554,7 @@ const loadCheckout = async (req, res) => {
       res.render("checkout", {
         isLoggedin,
         id: userSession.userId,
-        // offer: userSession.offer,
+        
       });
     }
   } catch (error) {
@@ -569,9 +568,10 @@ const storeOrder = async (req, res) => {
     if (userSession.userId) {
       const userData = await User.findById({ _id: userSession.userId });
       const completeUser = await userData.populate("cart.item.productId");
-      // console.log("CompleteUser: ", completeUser);
+      
       console.log(userData);
       userData.cart.totalPrice = userSession.couponTotal;
+
       const updatedTotal = await userData.save();
 
       if (completeUser.cart.totalPrice > 0) {
@@ -590,6 +590,7 @@ const storeOrder = async (req, res) => {
           products: completeUser.cart,
           offer: userSession.offer.name,
           discount: userSession.offer.discount,
+          sellingPrice: completeUser.cart.totalPrice
         });
         let orderProductStatus = [];
         for (let key of order.products.item) {
@@ -753,7 +754,8 @@ const deleteWishlist = async (req, res) => {
 };
 
 const addCartdelWishlist = async (req, res) => {
-  const productId = req.query.id;
+  try {
+    const productId = req.query.id;
   userSession = req.session;
   const userData = await User.findById({ _id: userSession.userId });
   const productData = await Product.findById({ _id: productId });
@@ -764,6 +766,10 @@ const addCartdelWishlist = async (req, res) => {
       res.redirect("/cart");
     }
   }
+  } catch (error) {
+    console.log(error.message);
+  }
+  
 };
 
 const addCoupon = async (req, res) => {

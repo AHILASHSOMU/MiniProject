@@ -42,13 +42,29 @@ const adminhome = async (req, res) => {
   try {
     adminSession = req.session;
     if (isAdminLoggedin) {
+      const xxx = await Order.aggregate([
+        {
+            $group: {
+                _id: { $dayOfWeek: { date: "$createdAt" } },
+                amount: { $sum: "$sellingPrice" },
+            },
+      },
+    ]);
+
+      const count = await Order.find().count()
+      const products = await Product.count()
+      const users = await User.count()
       const productData = await Product.find();
       const userData = await User.find();
       choice = "none";
+
+      const a = xxx.map((x) => x._id);
+        const amount = xxx.map((x)=>x.amount);
       res.render("home", {
         products: productData,
         users: userData,
         choice: choice,
+        amount,count,products,users
       });
     } else {
       res.redirect("/admin/login");
@@ -80,7 +96,7 @@ const verifyLogin = async (req, res) => {
           isAdminLoggedin = true;
           adminSession.adminId = userData._id;
           console.log("Admin logged in");
-          res.render("home");
+          res.redirect("/admin");
         }
       } else {
         res.render("login");

@@ -19,7 +19,7 @@
             <p>Dashboard</p>
           </a>
         </li>
-  
+
         <li class="active">
           <a href="/admin/adminUsers">
             <i class="ti-view-list-alt"></i>
@@ -54,7 +54,7 @@
           <a href="/admin/adminOrder">
             <i class="ti-bell"></i>
             <p>Orders</p>
-        </a>
+          </a>
         </li>
         <li>
           <a href="/admin/salesSheet">
@@ -62,7 +62,6 @@
             <p>Sales sheet</p>
           </a>
         </li>
-       
       </ul>
     </div>
   </div>
@@ -79,7 +78,6 @@
           </button>
           <a class="navbar-brand" href="#">User List</a>
         </div>
-        
       </div>
     </nav>
 
@@ -123,7 +121,6 @@
                       </td>
                       <td><%= users[i-1].email %></td>
                       <td><%= users[i-1].mobile %></td>
-                    
 
                       <td>
                         <!-- Default switch -->
@@ -250,66 +247,54 @@
   </div>
 </div>
 
+<script>
+  $(".block").on("click", function (e) {
+    e.preventDefault();
+    var self = $(this);
+    Swal.fire({
+      title: "Do you want to block the user?",
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: "Block",
+      denyButtonText: `Don't block`,
+      // }).then((result) => {
+      // /* Read more about isConfirmed, isDenied below */
+      // if (result.isConfirmed) {
+      //   Swal.fire('Blocked!', '', 'success')
+      // } else if (result.isDenied) {
+      //   Swal.fire('User not blocked', '', 'info')
+      // }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.href = self.attr("href");
+      }
+    });
+  });
+</script>
 
 <script>
-  
-  $(".block").on("click", function(e) {
-    e.preventDefault()
-    var self = $(this)
+  $(".unblock").on("click", function (e) {
+    e.preventDefault();
+    var self = $(this);
     Swal.fire({
-  title: 'Do you want to block the user?',
-  showDenyButton: true,
-  // showCancelButton: true,
-  confirmButtonText: 'Block',
-  denyButtonText: `Don't block`,
-// }).then((result) => {
-  // /* Read more about isConfirmed, isDenied below */
-  // if (result.isConfirmed) {
-  //   Swal.fire('Blocked!', '', 'success')
-  // } else if (result.isDenied) {
-  //   Swal.fire('User not blocked', '', 'info')
-  // }
-}).then((result) => {
+      title: "Do you want to Unblock the user?",
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: "Unblock",
+      denyButtonText: `Keep it blocked`,
+      // }).then((result) => {
+      //   /* Read more about isConfirmed, isDenied below */
+      //   if (result.isConfirmed) {
+      //     Swal.fire('Saved!', '', 'success')
+      //   } else if (result.isDenied) {
+      //     Swal.fire('Changes are not saved', '', 'info')
+      //   }
+    }).then((result) => {
       if (result.isConfirmed) {
-
-        location.href = self.attr("href")
-    }
-})
-
-})
-  
-  
-  </script>
-  
-  <script>
-  
-  $(".unblock").on("click", function(e) {
-    e.preventDefault()
-    var self = $(this)
-    Swal.fire({
-  title: 'Do you want to Unblock the user?',
-  showDenyButton: true,
-  // showCancelButton: true,
-  confirmButtonText: 'Unblock',
-  denyButtonText: `Keep it blocked`,
-// }).then((result) => {
-//   /* Read more about isConfirmed, isDenied below */
-//   if (result.isConfirmed) {
-//     Swal.fire('Saved!', '', 'success')
-//   } else if (result.isDenied) {
-//     Swal.fire('Changes are not saved', '', 'info')
-//   }
-}).then((result) => {
-      if (result.isConfirmed) {
-
-        location.href = self.attr("href")
-    }
-})
-
-})
-  
-  
-  </script>
-  
+        location.href = self.attr("href");
+      }
+    });
+  });
+</script>
 
 <%- include ('../partials/admin-sidebar.ejs') %>

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Product = require("../models/productModel");
 
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -35,7 +34,7 @@ const userSchema = new mongoose.Schema({
       {
         addId: {
           type: mongoose.Types.ObjectId,
-          ref: 'Address',
+          ref: "Address",
         },
       },
     ],
@@ -91,6 +90,7 @@ userSchema.methods.addToCart = function (product) {
     cart.item.push({ productId: product._id, qty: 1, price: product.price });
   }
   cart.totalPrice += product.price;
+
   console.log("User in schema:", this);
   return this.save();
 };
@@ -113,8 +113,9 @@ userSchema.methods.removefromCart = async function (productId) {
 userSchema.methods.addToWishlist = function (product) {
   const wishlist = this.wishlist;
   const isExisting = wishlist.item.findIndex((objInItems) => {
-    return new String(objInItems.productId).trim() == new String(product._id).trim()
-    
+    return (
+      new String(objInItems.productId).trim() == new String(product._id).trim()
+    );
   });
   if (isExisting >= 0) {
   } else {

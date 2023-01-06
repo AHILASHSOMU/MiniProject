@@ -1,8 +1,6 @@
 <% if(isLoggedin) { %> <%- include ('../partials/user-loggedin.ejs') %> <% }else
 {%> <%- include ('../partials/user-header.ejs') %> <% } %>
 
-
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-option">
   <div class="container">
@@ -60,16 +58,19 @@
                 </td>
                 <td class="quantity">
                   <div class="input-group mb-3">
-                   <input type="hidden" id="productId" value="<%=key.productId._id%>">
-                      <input
-                        name="quantity"
-                        type="number"
-                        class="quantity form-control input-number qty"
-                        value="<%= key.qty %>"
-                        min="1"
-                        max="20"
-                      />
-                   
+                    <input
+                      type="hidden"
+                      id="productId"
+                      value="<%=key.productId._id%>"
+                    />
+                    <input
+                      name="quantity"
+                      type="number"
+                      class="quantity form-control input-number qty"
+                      value="<%= key.qty %>"
+                      min="1"
+                      max="20"
+                    />
                   </div>
                 </td>
                 <td class="cart__price">
@@ -103,14 +104,12 @@
               <a href="/shop">Continue Shopping</a>
             </div>
           </div>
-        
         </div>
       </div>
 
       <% if(id) { %> <%{ %>
 
       <div class="col-lg-4">
-       
         <div class="cart__total">
           <h6>Cart total</h6>
           <ul>
@@ -131,16 +130,12 @@
         </div>
       </div>
       <% } %> <% }else{ %>
-              <h3>Cart is empty</h3>
-              <% } %>
+      <h3>Cart is empty</h3>
+      <% } %>
     </div>
   </div>
 </section>
 
 <!-- Shopping Cart Section End -->
-
-
-
-
 
 <%- include ('../partials/user-footer.ejs') %>
