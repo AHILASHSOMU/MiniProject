@@ -1,99 +1,93 @@
 <%- include ('../partials/admin-header.ejs') %>
 
-<div class="wrapper">
-  <div class="sidebar" data-background-color="black" data-active-color="danger">
-    <!--
-		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-	 -->
+  <div class="wrapper">
+    <div class="sidebar" data-background-color="black" data-active-color="danger">
+      <!--
+		 Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		  Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	    -->
 
-    <div class="sidebar-wrapper">
-      <div class="logo">
-        <a href="#" class="simple-text"> Male-Fashion </a>
-      </div>
-
-      <ul class="nav">
-        <li class="active">
-          <a href="/admin">
-            <i class="ti-panel"></i>
-            <p>Dashboard</p>
-          </a>
-        </li>
-
-        <li>
-          <a href="/admin/adminUsers">
-            <i class="ti-view-list-alt"></i>
-            <p>User List</p>
-          </a>
-        </li>
-        <li>
-          <a href="/admin/adminProductlist">
-            <i class="ti-view-list-alt"></i>
-            <p>Product List</p>
-          </a>
-        </li>
-        <li>
-          <a href="/admin/adminCategory">
-            <i class="ti-text"></i>
-            <p>Category</p>
-          </a>
-        </li>
-        <li>
-          <a href="/admin/adminOffer">
-            <i class="ti-pencil-alt2"></i>
-            <p>AdminOffer</p>
-          </a>
-        </li>
-        <li>
-          <a href="/admin/banners">
-            <i class="ti-map"></i>
-            <p>Banner</p>
-          </a>
-        </li>
-        <li>
-          <a href="/admin/adminOrder">
-            <i class="ti-bell"></i>
-            <p>Orders</p>
-          </a>
-        </li>
-        <li>
-          <a href="/admin/salesSheet">
-            <i class="ti-bell"></i>
-            <p>Sales sheet</p>
-          </a>
-        </li>
-
-        <li>
-          <a class="dropdown-item" href="/admin/adminlogout"
-            ><i class="fa fa-power-off m-r-5 m-l-5" class="simple-text"></i>
-            Logout</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="main-panel">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar bar1"></span>
-            <span class="icon-bar bar2"></span>
-            <span class="icon-bar bar3"></span>
-          </button>
-          <a class="navbar-brand" href="#">Dashboard</a>
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="#" class="simple-text"> Male-Fashion </a>
         </div>
-      </div>
-    </nav>
 
-    <!-- <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
-    <div class="work-space py-3 px-5">
-      <link
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-        rel="stylesheet"
-      /> -->
+        <ul class="nav">
+          <li class="active">
+            <a href="/admin">
+              <i class="ti-panel"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="/admin/adminUsers">
+              <i class="ti-view-list-alt"></i>
+              <p>User List</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminProductlist">
+              <i class="ti-view-list-alt"></i>
+              <p>Product List</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminCategory">
+              <i class="ti-text"></i>
+              <p>Category</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminOffer">
+              <i class="ti-pencil-alt2"></i>
+              <p>AdminOffer</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/banners">
+              <i class="ti-map"></i>
+              <p>Banner</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/adminOrder">
+              <i class="ti-bell"></i>
+              <p>Orders</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/salesSheet">
+              <i class="ti-bell"></i>
+              <p>Sales sheet</p>
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="/admin/adminlogout"><i class="fa fa-power-off m-r-5 m-l-5"
+                class="simple-text"></i>
+              Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-panel">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar bar1"></span>
+              <span class="icon-bar bar2"></span>
+              <span class="icon-bar bar3"></span>
+            </button>
+            <a class="navbar-brand" href="#">Dashboard</a>
+          </div>
+        </div>
+      </nav>
+
+
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-xl-3">
@@ -101,7 +95,9 @@
               <div class="card-block">
                 <h6 class="m-b-20">Total Orders</h6>
                 <h2 class="text-right">
-                  <i class="fa fa-rocket f-left"></i><span><%=count %></span>
+                  <i class="fa fa-rocket f-left"></i><span>
+                    <%=counts %>
+                  </span>
                 </h2>
               </div>
             </div>
@@ -112,8 +108,9 @@
               <div class="card-block">
                 <h6 class="m-b-20">Total Products</h6>
                 <h2 class="text-right">
-                  <i class="fa fa-refresh f-left"></i
-                  ><span><%=products %></span>
+                  <i class="fa fa-refresh f-left"></i><span>
+                    <%=product %>
+                  </span>
                 </h2>
               </div>
             </div>
@@ -124,8 +121,9 @@
               <div class="card-block">
                 <h6 class="m-b-20">Total Users</h6>
                 <h2 class="text-right">
-                  <i class="fa fa-credit-card f-left"></i
-                  ><span> <%=users %></span>
+                  <i class="fa fa-credit-card f-left"></i><span>
+                    <%=user %>
+                  </span>
                 </h2>
               </div>
             </div>
@@ -138,122 +136,123 @@
       </div>
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <input type="hidden" value="<%=amount %>" id="amount" />
-    </div>
-    <style>
-      body {
-        margin-top: 20px;
-        background: #fafafa;
-      }
-      .order-card {
-        color: #fff;
-      }
+      <input type="hidden" value="<%=amounts %>" id="amount" />
 
-      .bg-c-blue {
-        background: linear-gradient(45deg, #4099ff, #73b4ff);
-      }
+      <style>
+        body {
+          margin-top: 20px;
+          background: #fafafa;
+        }
 
-      .bg-c-green {
-        background: linear-gradient(45deg, #2ed8b6, #59e0c5);
-      }
+        .order-card {
+          color: #fff;
+        }
 
-      .bg-c-yellow {
-        background: linear-gradient(45deg, #ffb64d, #ffcb80);
-      }
+        .bg-c-blue {
+          background: linear-gradient(45deg, #4099ff, #73b4ff);
+        }
 
-      .bg-c-pink {
-        background: linear-gradient(45deg, #ff5370, #ff869a);
-      }
+        .bg-c-green {
+          background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+        }
 
-      .card {
-        border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-        box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-        border: none;
-        margin-bottom: 30px;
-        -webkit-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-      }
+        .bg-c-yellow {
+          background: linear-gradient(45deg, #ffb64d, #ffcb80);
+        }
 
-      .card .card-block {
-        padding: 25px;
-      }
+        .bg-c-pink {
+          background: linear-gradient(45deg, #ff5370, #ff869a);
+        }
 
-      .order-card i {
-        font-size: 26px;
-      }
+        .card {
+          border-radius: 5px;
+          -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+          box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+          border: none;
+          margin-bottom: 30px;
+          -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+        }
 
-      .f-left {
-        float: left;
-      }
+        .card .card-block {
+          padding: 25px;
+        }
 
-      .f-right {
-        float: right;
-      }
-    </style>
-    <script>
-      const ctx = document.getElementById("myChart");
-      const a = document.getElementById("amount").value;
-      const k = a.split(",").map((c) => {
-        return parseInt(c);
-      });
-      console.log(k);
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: [
-            "Monday",
-            "Thursday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ],
-          datasets: [
-            {
-              label: "amount",
-              data: k,
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
+        .order-card i {
+          font-size: 26px;
+        }
+
+        .f-left {
+          float: left;
+        }
+
+        .f-right {
+          float: right;
+        }
+      </style>
+      <script>
+        const ctx = document.getElementById("myChart");
+        const a = document.getElementById("amount").value;
+        const k = a.split(",").map((c) => {
+          return parseInt(c);
+        });
+        console.log(k);
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: [
+              "Monday",
+              "Thursday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            datasets: [
+              {
+                label: "amount",
+                data: k,
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
             },
           },
-        },
-      });
-    </script>
+        });
+      </script>
 
-    <footer class="footer">
-      <div class="container-fluid">
-        <nav class="pull-left">
-          <ul>
-            <li>
-              <a href="#"> Male-Fashion </a>
-            </li>
-            <li>
-              <a href="#"> Blog </a>
-            </li>
-            <li>
-              <a href="#"> Licenses </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright pull-right">
-          &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          , made with <i class="fa fa-heart heart"></i> by
-          <a href="#">Male-Fashion</a>
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="pull-left">
+            <ul>
+              <li>
+                <a href="#"> Male-Fashion </a>
+              </li>
+              <li>
+                <a href="#"> Blog </a>
+              </li>
+              <li>
+                <a href="#"> Licenses </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright pull-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            , made with <i class="fa fa-heart heart"></i> by
+            <a href="#">Male-Fashion</a>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
-</div>
 
-<%- include ('../partials/admin-sidebar.ejs') %>
+  <%- include ('../partials/admin-sidebar.ejs') %>

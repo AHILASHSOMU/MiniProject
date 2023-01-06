@@ -63,8 +63,11 @@ const adminhome = async (req, res) => {
       res.render("home", {
         products: productData,
         users: userData,
-        choice: choice,
-        amount,count,products,users
+        choices: choice,
+        amounts:amount,
+        counts:count,
+        product:products,
+        user:users
       });
     } else {
       res.redirect("/admin/login");
