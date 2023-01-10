@@ -59,7 +59,8 @@ const adminhome = async (req, res) => {
       choice = "none";
 
       const a = xxx.map((x) => x._id);
-        const amount = xxx.map((x)=>x.amount);
+      const amount = xxx.map((x)=>x.amount);
+
       res.render("home", {
         products: productData,
         users: userData,
@@ -69,6 +70,10 @@ const adminhome = async (req, res) => {
         product:products,
         user:users
       });
+
+    
+     
+      
     } else {
       res.redirect("/admin/login");
     }
